@@ -1,0 +1,3 @@
+requests>=2.18.4
+ruamel.yaml>=0.15.35
+tqdm>=4.19.5
