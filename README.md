@@ -1,4 +1,6 @@
-# Player Unknown's Battlegrounds (PUBG) Crate Expected Values
+# Cratonomics
+
+## Player Unknown's Battlegrounds (PUBG) Crate Expected Values
 
 Python 3 program to download pricing data from the Steam [market](https://steamcommunity.com/market/) and calculate the [Expected Value](https://en.wikipedia.org/wiki/Expected_value) of opening a [PUBG](http://store.steampowered.com/app/578080/PLAYERUNKNOWNS_BATTLEGROUNDS/) crate compared to selling the crate on the Steam market.
 
@@ -18,3 +20,17 @@ The pricing data download from the Steam market is throttled to 1 request every 
 ## Run
 
 1. `python get_price_data.py`
+1. `python print_EVs.py`
+
+## Output
+
+```
+python .\print_EVs.py
+Tue Feb 13 23:20:04 2018
+Crate              EV of opening ($)    Crate Price ($)
+---------------  -------------------  -----------------
+BIKER CRATE                     0.20               0.83
+DESPERADO CRATE                -0.76               0.18
+SURVIVOR CRATE                  0.09               0.47
+WANDERER CRATE                  0.09               0.61
+```

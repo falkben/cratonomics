@@ -1,7 +1,8 @@
-
+import time
 from pathlib import Path
 
 import ruamel.yaml as yaml
+from tabulate import tabulate
 
 
 def load_price_data(item):
@@ -13,10 +14,25 @@ def load_price_data(item):
         return item_pricing
 
 
+def items_price_data(crate_item_names):
+    items_price = []
+    for item_name in crate_item_names:
+        price_data = load_price_data(item_name)
+        if price_data is not None:
+            # price = $2.03
+            items_price.append(float(price_data['lowest_price'][1:]))
+        else:
+            items_price.append(None)
+            print('Price data not found for {}'.format(item_name))
+    return items_price
+
+
 def print_EVs():
     crate_path = Path('crates/')
     crate_files = crate_path.glob('*.*')
 
+    print(time.asctime())
+    print_data = []
     for cf in crate_files:
         with open(cf) as stream:
             try:
@@ -24,21 +40,27 @@ def print_EVs():
             except yaml.YAMLError as exc:
                 print(exc)
 
-            crate_price = load_price_data(crate_info['name'])
+            crate_price = items_price_data([crate_info['name']])[0]
+
             if 'items' in crate_info:
-                crate_items = crate_info['items']
-                items_weight_prices = []
-                # print('Sum of probability of items in crate {}: {}'.format(
-                #     crate_info['name'], sum(crate_items.values())))
-                for item_name, item_prob in crate_items.items():
-                    price_data = load_price_data(item_name)
-                    if price_data is not None:
-                        item_price = float(price_data['lowest_price'][1:])
-                        items_weight_prices.append(item_price * item_prob/100)
-                    else:
-                        print('Price data not found for {}'.format(item_name))
-                print('{}: Items: ${:.02f}, Market: ${:.02f}'.format(crate_info['name'], sum(
-                    items_weight_prices), float(crate_price['lowest_price'][1:])))
+                item_prices = items_price_data(crate_info['items'].keys())
+
+            if 'keys' in crate_info:
+                key_prices = items_price_data(crate_info['keys'])
+            else:
+                key_prices = [0]
+
+            items_weights = [a/100 for a in crate_info['items'].values()]
+            items_EV = sum([p*w for p, w in zip(item_prices, items_weights)])
+            EV = items_EV - min(key_prices)
+
+            print_data.append([crate_info['name'], EV, crate_price])
+
+            # print('{:15}: Expected value of opening: ${: 1.02f}, Price of crate: ${:1.02f}'.format(
+            #     crate_info['name'], EV, float(crate_price['lowest_price'][1:])))
+
+    headers = ['Crate', 'EV of opening ($)', 'Crate Price ($)']
+    print(tabulate(print_data, headers, floatfmt=".2f"))
 
 
 def main():
