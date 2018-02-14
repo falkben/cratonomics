@@ -8,7 +8,7 @@ from tabulate import tabulate
 def load_price_data(item):
     item_path = Path('items_pricing/', item + '.yml')
     if item_path.exists():
-        with open(item_path, 'r') as f:
+        with open(str(item_path), 'r') as f:
             item_pricing = yaml.load(f, Loader=yaml.Loader)
 
         return item_pricing
@@ -34,7 +34,7 @@ def print_EVs():
     print(time.asctime())
     print_data = []
     for cf in crate_files:
-        with open(cf) as stream:
+        with open(str(cf)) as stream:
             try:
                 crate_info = yaml.load(stream, Loader=yaml.Loader)
             except yaml.YAMLError as exc:

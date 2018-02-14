@@ -34,7 +34,7 @@ def save_price_data(item, time_thresh=10):
 
     if item_path.exists():
         # load old price data
-        with open(item_path, 'r') as f:
+        with open(str(item_path), 'r') as f:
             try:
                 old_item_pricing = yaml.load(f, Loader=yaml.Loader)
             except yaml.YAMLError as exc:
@@ -53,14 +53,14 @@ def save_price_data(item, time_thresh=10):
     item_data['time'] = now
     item_data.pop('success')
 
-    with open(item_path, 'w') as f:
+    with open(str(item_path), 'w') as f:
         yaml.dump(item_data, f, default_flow_style=False)
 
     return item_data
 
 
 def get_crate_info(cf):
-    with open(cf) as stream:
+    with open(str(cf)) as stream:
         try:
             crate_info = yaml.load(stream, Loader=yaml.Loader)
         except yaml.YAMLError as exc:
