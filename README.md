@@ -12,9 +12,11 @@ The pricing data download from the Steam market is throttled to 1 request every 
 
 1. Clone this repo
 1. Create a virtual environment: `python -m venv env` (using Python3)
-1. Activate virtual environment: 
-    - `source env/bin activate` (LINUX)
-    - `.\env\Scripts\activate` (WIN)
+1. Activate virtual environment
+    - Linux
+        - `source env/bin activate`
+    - Windows
+        - `.\env\Scripts\activate`
 1. Install prerequisits: `pip install -r requirements.txt`
 
 ## Run
@@ -24,13 +26,13 @@ The pricing data download from the Steam market is throttled to 1 request every 
 
 ## Output
 
-```
-python .\print_EVs.py
-Tue Feb 13 23:20:04 2018
-Crate              EV of opening ($)    Crate Price ($)
----------------  -------------------  -----------------
-BIKER CRATE                     0.20               0.83
-DESPERADO CRATE                -0.76               0.18
-SURVIVOR CRATE                  0.09               0.47
-WANDERER CRATE                  0.09               0.61
+```shell
+> python print_EVs.py
+Current time: Thu Feb 15 04:46:04 2018
+Crate              Open EV ($)    Crate ($)    Key ($)    Price age (min)
+---------------  -------------  -----------  ---------  -----------------
+DESPERADO CRATE          -0.70         0.18       2.90              15.85
+BIKER CRATE               0.21         0.86       0.00              14.62
+SURVIVOR CRATE            0.09         0.48       0.00              13.09
+WANDERER CRATE            0.10         0.60       0.00              11.51
 ```
