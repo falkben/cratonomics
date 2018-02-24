@@ -1,0 +1,22 @@
+name: 'MILITIA CRATE'
+items:
+  'Tank Top (Gray)': 20
+  'Raglan T-shirt (Red/White)': 20
+  'Polo Shirt (Pink)': 20
+  'Vintage Polo Shirt': 20
+  'Military Shirt (Gray)': 6.5
+  'Military Trousers (Black)': 6.5
+  'Long Sleeved Turtleneck (Black)': 3
+  'Utility Belt (Brown)': 1.4
+  'Camo Tank Top (Red)': 1.4
+  'Military Boots (Black)': 0.4
+  'Battle Belt': 0.28
+  'Vintage Gas Mask': 0.28
+  'Leather Bootcut Pants': 0.08
+  'Military Jacket (Black)': 0.05
+  'Military Cap (Black)': 0.05
+  'Cowboy Hat (Brown)': 0.028
+  'Faux Leather Jacket': 0.0128
+  'Cowboy Hat (White)': 0.0128
+  'Military Skirt (Black)': 0.0064
+drop_rate: 40

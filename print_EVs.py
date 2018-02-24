@@ -21,7 +21,7 @@ def items_price_data(crate_item_names):
         price_data = load_price_data(item_name)
         if price_data is not None:
             # price = $2.03
-            items_price.append(float(price_data['lowest_price'][1:]))
+            items_price.append(float(price_data['median_price'][1:]))
             price_time.append(float(price_data['time']))
         else:
             items_price.append(None)

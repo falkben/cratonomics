@@ -1,0 +1,22 @@
+name: 'MILITIA CRATE'
+items:
+  'Zest Turtleneck (White)': 15
+  'School Shoes (Beige)': 15
+  'Mesh Polo Shirt': 10
+  'Combat Gloves (Khaki)': 10
+  'Checkered Shirt (Coral)': 10
+  'Hi-top Canvas Sneakers (Pink)': 10
+  'Retro Polo Shirt': 5
+  'Combat Pants (Coral)': 5
+  'Zest Sunglasses': 4.5
+  'Zest Loafers with Socks': 4.5
+  'Denim Bootcut Pants': 4.5
+  'Zest Bootcut Pants': 2.5
+  'Zest Silk Scarf': 1.3
+  'Floral Retro Jacket': 1.3
+  'Zest Retro Jacket': 0.6
+  'Zest Denim Jacket': 0.32
+  'Cropped Corset': 0.32
+  'Zest Checkered Skirt': 0.16
+keys:
+  - 'EARLY BIRD KEY'
