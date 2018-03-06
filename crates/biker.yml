@@ -5,11 +5,11 @@ items:
   'Biker Pants (Black)': 0.40
   'Biker Pants (Gray)': 0.05
   'Cloth Mask (Checkered)': 0.0064
-  'Dirty Long-sleeved T-shirt': 10.00
+  'Dirty Long Sleeved T-shirt': 10.00
   'Floral Shirt (Black)': 0.05
   'Floral Shirt (White)': 0.26
   'Gas Mask (Half)': 4.50
-  'Long-sleeved T-shirt (Red)': 15.00
+  'Long Sleeved T-shirt (Red)': 15.00
   'Padded Jacket (Purple)': 0.06
   'Patrol Cap (Brown)': 1.20
   'Patrol Cap (Gray)': 0.40
@@ -25,5 +25,5 @@ items:
   'Sleeveless Turtleneck (Gray)': 1.20
   'Sleeveless Turtleneck (Red)': 4.50
   'Sneakers (Black)': 0.26
-  'T-shirt (Pink striped)': 10.00
+  'Striped T-shirt (Pink)': 10.00
 drop_rate: 20

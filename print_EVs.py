@@ -21,8 +21,11 @@ def items_price_data(crate_item_names):
         price_data = load_price_data(item_name)
         if price_data is not None:
             # price = $2.03
-            items_price.append(float(price_data['median_price'][1:]))
-            price_time.append(float(price_data['time']))
+            try:
+                items_price.append(float(price_data['median_price'][1:]))
+                price_time.append(float(price_data['time']))
+            except Exception as e:
+                print('Error in retrieving data for', item_name)
         else:
             items_price.append(None)
             price_time.append(None)
@@ -59,11 +62,11 @@ def print_EVs():
             else:
                 key_price = 0
 
-            items_weights = [a/100 for a in crate_info['items'].values()]
-            items_EV = sum([p*w for p, w in zip(item_prices, items_weights)])
+            items_weights = [a / 100 for a in crate_info['items'].values()]
+            items_EV = sum([p * w for p, w in zip(item_prices, items_weights)])
 
             now = time.time()
-            price_age = (now - min(item_price_times + [crate_price_time]))/60
+            price_age = (now - min(item_price_times + [crate_price_time])) / 60
 
             EV = items_EV - key_price
 
