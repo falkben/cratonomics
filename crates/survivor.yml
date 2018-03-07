@@ -2,28 +2,28 @@ name: 'SURVIVOR CRATE'
 items:
   'Baseball cap': 10
   'Beanie': 4.5
-  'Brown Hi-top Trainers': 5
+  'Hi-top Trainers (Brown)': 5
   'Checked Shirt (Red)': .26
   'Checked Shirt (White)': .26
   'Combat Pants (Black)': 15
   'Combat Pants (Blue)': 10
-  'Combat Pants (camo)': 15
+  'Camo Combat Pants': 15
   'Combat Pants (White)': 10
   'Fingerless Gloves (Camo)': 4.5
   'Fingerless Gloves (Tan)': 2.5
-  'Grey Boots': 5
-  'matched Grey Shirt': 1.2
+  'Boots (Gray)': 5
+  'Matched Shirt (Gray)': 1.2
   'Mini-skirt (Purple)': .0064
   'Padded Jacket (Beige)': .4
-  'Padded Jacket (Camo)': .06
+  'Camo Padded Jacket': .06
   'Padded Jacket (Khaki)': 1.2
   'Shirt (White)': .4
   'Slacks (Purple)': .06
   'Coat': .0128
-  'Coat(Camel)': .05
-  'Coat(Gray)': .05
-  'Coat(Red)': .0128
-  'Vintage Baseball Hat (Black)': 4.5
-  'Vintage Baseball Hat (White)': 10
-  'Woman''s Tuxedo Jacket (Purple)': .028
+  'Coat (Camel)': .05
+  'Coat (Gray)': .05
+  'Coat (Red)': .0128
+  'Vintage Baseball Cap (Black)': 4.5
+  'Vintage Baseball Cap (White)': 10
+  'Female Tuxedo Jacket (Purple)': .028
 drop_rate: 10
