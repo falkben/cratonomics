@@ -74,7 +74,7 @@ def print_EVs():
                 [crate_info['name'], EV, crate_price, key_price, price_age])
 
     headers = ['Crate', 'Open EV ($)', 'Crate ($)',
-               'Key ($)', 'Price age (min)']
+               'Key ($)', 'Price age (max)']
     print(tabulate(print_data, headers, floatfmt=".2f"))
 
 
