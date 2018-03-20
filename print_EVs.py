@@ -1,31 +1,35 @@
 import time
+from datetime import datetime
 from pathlib import Path
 
 import ruamel.yaml as yaml
+from pymongo import MongoClient
 from tabulate import tabulate
 
 
+client = MongoClient()
+db = client.price_database
+item_prices = db.item_prices
+
+
 def load_price_data(item):
-    item_path = Path('items_pricing/', item + '.yml')
-    if item_path.exists():
-        with open(str(item_path), 'r') as f:
-            item_pricing = yaml.load(f, Loader=yaml.Loader)
-
-        return item_pricing
+    return item_prices.find_one(
+        {'name': item}, sort=[('datetime', -1)])
 
 
-def items_price_data(crate_item_names):
+def items_price_data(item_names):
     items_price = []
     price_time = []
-    for item_name in crate_item_names:
+    for item_name in item_names:
         price_data = load_price_data(item_name)
         if price_data is not None:
             # price = $2.03
             try:
                 items_price.append(float(price_data['median_price'][1:]))
-                price_time.append(float(price_data['time']))
+                price_time.append(price_data['datetime'])
             except Exception as e:
-                print('Error in retrieving data for', item_name)
+                print('Error in retrieving data for {} with error: {}'.format(
+                    item_name, e))
         else:
             items_price.append(None)
             price_time.append(None)
@@ -56,7 +60,7 @@ def print_EVs():
                     crate_info['items'].keys())
 
             if 'keys' in crate_info:
-                key_prices, key_price_times = items_price_data(
+                key_prices, _ = items_price_data(
                     crate_info['keys'])
                 key_price = min(key_prices)
             else:
@@ -65,8 +69,9 @@ def print_EVs():
             items_weights = [a / 100 for a in crate_info['items'].values()]
             items_EV = sum([p * w for p, w in zip(item_prices, items_weights)])
 
-            now = time.time()
-            price_age = (now - min(item_price_times + [crate_price_time])) / 60
+            now = datetime.utcnow()
+            price_age = now - min(item_price_times + [crate_price_time])
+            price_age = round(price_age.total_seconds() / 60)
 
             EV = items_EV - key_price
 

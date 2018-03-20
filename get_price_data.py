@@ -1,19 +1,16 @@
 import time
+from datetime import datetime, timedelta
 from pathlib import Path
+from random import random
 
-import ruamel.yaml as yaml
 import requests
+import ruamel.yaml as yaml
+from pymongo import MongoClient
 from tqdm import tqdm
 
-# use database to store the price data instead of flat files
-
-
-# # https://realpython.com/blog/python/introduction-to-mongodb-and-python/
-# import pymongo
-# # in another terminal start run mongod
-# from pymongo import MongoClient
-# client = MongoClient()
-# db = client.price_data
+client = MongoClient()
+db = client.price_database
+item_prices = db.item_prices
 
 
 def get_price_data(item, appid=578080, currency=1):
@@ -23,38 +20,34 @@ def get_price_data(item, appid=578080, currency=1):
         url_base, appid, currency, item)
 
     r = requests.get(url)
-    time.sleep(3)
+    time.sleep(3+random())
     return r.json()
 
 
 def save_price_data(item, time_thresh=10):
-    item_path = Path('items_pricing/', item + '.yml')
+    now = datetime.utcnow()
 
-    now = time.time()
+    # get the latest from the database, if "fresh" enough, don't even attempt to get new data
+    last_price_data = item_prices.find_one(
+        {'name': item}, sort=[('datetime', -1)])
 
-    if item_path.exists():
-        # load old price data
-        with open(str(item_path), 'r') as f:
-            try:
-                old_item_pricing = yaml.load(f, Loader=yaml.Loader)
-            except yaml.YAMLError as exc:
-                print(exc)
-
+    if last_price_data is not None:
         # only freshen the data if it's older than time_thresh minutes
-        if old_item_pricing['time'] + time_thresh*60 > now:
-            return old_item_pricing
+        if last_price_data['datetime'] + timedelta(minutes=time_thresh) > now:
+            return last_price_data
 
     # https://steamcommunity.com/market/priceoverview/?appid=578080&currency=1&market_hash_name=Ballistic%20Mask
     item_data = get_price_data(item)
-    if item_data['success'] is False:
-        print('item not found {}'.format(item))
+
+    if item_data is None or not item_data['success']:
+        print("Error in getting price data for item {}".format(item))
         return None
 
-    item_data['time'] = now
+    item_data['datetime'] = now
     item_data.pop('success')
+    item_data['name'] = item
 
-    with open(str(item_path), 'w') as f:
-        yaml.dump(item_data, f, default_flow_style=False)
+    item_prices.insert_one(item_data)
 
     return item_data
 
