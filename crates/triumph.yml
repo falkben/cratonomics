@@ -1,0 +1,23 @@
+name: 'TRIUMPH CRATE'
+items:
+  'Desert Digital - R45': 15
+  'Rugged (Orange) - UMP9': 15
+  'Rugged (Orange) - SCAR-L': 10
+  'Rugged (Orange) - M416': 10
+  'Rugged (Orange) - AKM': 10
+  'Rugged (Orange) - Kar98k': 10 
+  'Gold Plate - Winchester 1894': 5
+  'Trifecta - P92': 5
+  'Desert Digital - Mini 14': 4.5
+  'Trifecta - Micro UZI': 4.5
+  'Gold Plate - Sawed-off': 4.5
+  'Desert Digital - Kar98k': 2.5
+  'Trifecta - SCAR-L': 1.3
+  'Desert Digital - M416': 1.3
+  'Gold Plate - SKS': .6
+  'Glory - UMP9': .32
+  'Gold Plate - S12K': .32
+  'Glory - AKM': .16
+drop_rate: 20
+key:
+  - 'Weapon Skin Key'

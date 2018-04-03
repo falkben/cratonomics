@@ -63,7 +63,7 @@ def get_crate_info(cf):
 
 def save_price_each_crate():
     crate_path = Path('crates/')
-    crate_files = crate_path.glob('*.*')
+    crate_files = list(crate_path.glob('*.*'))
 
     # getting the total # of items for the progress bar
     tot_items = 0
@@ -75,7 +75,6 @@ def save_price_each_crate():
             tot_items += len(crate_info['keys'])
 
     with tqdm(total=tot_items) as pbar:
-        crate_files = crate_path.glob('*.*')
         for cf in tqdm(crate_files):
             crate_info = get_crate_info(cf)
 

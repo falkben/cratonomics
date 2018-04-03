@@ -4,9 +4,11 @@
 
 Python 3 program to download pricing data from the Steam [market](https://steamcommunity.com/market/) and calculate the [Expected Value](https://en.wikipedia.org/wiki/Expected_value) of opening a [PUBG](http://store.steampowered.com/app/578080/PLAYERUNKNOWNS_BATTLEGROUNDS/) crate compared to selling the crate on the Steam market.
 
-For some crates, the containing item probability is [published](https://steamcommunity.com/games/578080/announcements/detail/1576688908203724690) (Biker and Desperado).  For other crates (Survivor and Wanderer), data was found online from a secondary [source](https://www.pubg-stats.net/depot/crates).  These probabilities could be innacurate.
+For some crates, the containing item probability is published: [Biker / Desperado](https://steamcommunity.com/games/578080/announcements/detail/1576688908203724690),  [Raider / Triumph](https://steamcommunity.com/games/578080/announcements/detail/1653258341515442673) and [Militia / Fever](https://steamcommunity.com/games/578080/announcements/detail/2742000471562664977).  For other crates (Survivor / Wanderer), data was found online from a secondary [source](https://www.pubg-stats.net/depot/crates).  These probabilities could be innacurate.
 
-The pricing data download from the Steam market is throttled to 1 request every 3 seconds.  Thus, the initial run time of the program is > 5 minutes.
+Downloading pricing data from the Steam market is throttled to 1 request every 3 seconds.  Thus, the initial run time of the program is > 5 minutes.
+
+This program saves the data into a locally running [mongoDB](https://www.mongodb.com/download-center) server.
 
 ## Install
 
