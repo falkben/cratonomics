@@ -93,6 +93,8 @@ def print_EVs():
         if crate_result is not None:
             print_data.append(crate_result)
 
+    print_data.sort(key=lambda x: x[0])
+
     headers = ['Crate', 'Open EV ($)', 'Crate ($)',
                'Key ($)', 'Price age (max)']
     print(tabulate(print_data, headers, floatfmt=".2f"))
