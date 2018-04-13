@@ -8,7 +8,7 @@ For some crates, the containing item probability is published: [Biker / Desperad
 
 Downloading pricing data from the Steam market is throttled to 1 request every 3 seconds.  Thus, the initial run time of the program is > 5 minutes.
 
-This program saves the data into a locally running [mongoDB](https://www.mongodb.com/download-center) server.
+This program saves the data into a locally running [mongoDB](https://www.mongodb.com/download-center) server.  mongod needs to be running before running the script.
 
 ## Install
 
@@ -30,11 +30,15 @@ This program saves the data into a locally running [mongoDB](https://www.mongodb
 
 ```shell
 > python print_EVs.py
-Current time: Thu Feb 15 04:46:04 2018
-Crate              Open EV ($)    Crate ($)    Key ($)    Price age (min)
+Current time: Fri Apr 13 12:47:54 2018
+Crate              Open EV ($)    Crate ($)    Key ($)    Price age (max)
 ---------------  -------------  -----------  ---------  -----------------
-DESPERADO CRATE          -0.70         0.18       2.90              15.85
-BIKER CRATE               0.21         0.86       0.00              14.62
-SURVIVOR CRATE            0.09         0.48       0.00              13.09
-WANDERER CRATE            0.10         0.60       0.00              11.51
+BIKER CRATE               0.10         0.46       0.00                143
+DESPERADO CRATE          -1.23         0.02       2.50                144
+FEVER CRATE              -0.93         0.04       2.50                136
+MILITIA CRATE             0.20         0.78       0.00                139
+RAIDER CRATE              0.25         1.21       0.00                135
+SURVIVOR CRATE            0.06         0.32       0.00                141
+TRIUMPH CRATE             3.15         2.33       2.50                506
+WANDERER CRATE            0.06         0.42       0.00                138
 ```

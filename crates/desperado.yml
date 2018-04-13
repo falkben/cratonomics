@@ -22,6 +22,6 @@ items:
   'Striped Tank Top': 7.50
   'Tracksuit Pants (Light Blue)': 4.50
   'Wide Pants (Red)': 7.50
-keys:
-  - 'EARLY BIRD KEY'
+key:
+  'EARLY BIRD KEY': 2.50
 drop_rate: 10

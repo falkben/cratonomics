@@ -1,3 +1,4 @@
+import sys
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -8,9 +9,16 @@ import ruamel.yaml as yaml
 from pymongo import MongoClient
 from tqdm import tqdm
 
-client = MongoClient()
-db = client.price_database
-item_prices = db.item_prices
+CLIENT = MongoClient(serverSelectionTimeoutMS=3)
+# check if mongod is running
+try:
+    CLIENT.server_info()
+except Exception as e:
+    print(e)
+    sys.exit()
+
+DB = CLIENT.price_database
+ITEM_PRICES_TABLE = DB.item_prices
 
 
 def get_price_data(item, appid=578080, currency=1):
@@ -28,7 +36,7 @@ def save_price_data(item, time_thresh=10):
     now = datetime.utcnow()
 
     # get the latest from the database, if "fresh" enough, don't even attempt to get new data
-    last_price_data = item_prices.find_one(
+    last_price_data = ITEM_PRICES_TABLE.find_one(
         {'name': item}, sort=[('datetime', -1)])
 
     if last_price_data is not None:
@@ -47,7 +55,7 @@ def save_price_data(item, time_thresh=10):
     item_data.pop('success')
     item_data['name'] = item
 
-    item_prices.insert_one(item_data)
+    ITEM_PRICES_TABLE.insert_one(item_data)
 
     return item_data
 
@@ -88,11 +96,10 @@ def save_price_each_crate():
                 for item_name in crate_items.keys():
                     save_price_data(item_name)
                     pbar.update(1)
-            if 'keys' in crate_info:
-                crate_keys = crate_info['keys']
-                for key_name in crate_keys:
-                    save_price_data(key_name)
-                    pbar.update(1)
+            if 'key' in crate_info:
+                key_name = list(crate_info['key'].keys())[0]
+                save_price_data(key_name)
+                pbar.update(1)
 
 
 def main():

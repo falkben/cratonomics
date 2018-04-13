@@ -18,6 +18,6 @@ items:
   'Zest Denim Jacket': 0.32
   'Cropped Corset': 0.32
   'Zest Checkered Skirt': 0.16
-keys:
-  - 'EARLY BIRD KEY'
+key:
+  'EARLY BIRD KEY': 2.50
 drop_rate: 10
