@@ -1,0 +1,21 @@
+name: 'AVIATOR CRATE'
+items:
+  'Suede Aviator Cap': 20.00
+  'Vintage Aviator Goggles': 1.30
+  'Leather "Skyrocket" Jacket': 0.32
+  'Feathered Shirt': 4.50
+  'Pilot Pants': 1.30
+  'Desert Shemagh': 0.60
+  'Lazy Sunday Sweatpants': 2.50
+  'Denim Shirt with Necktie': 4.50
+  'Violent Violet Jacket': 0.32
+  'Lightbringer Shirt': 4.50
+  'Fringed Hotpants': 0.16
+  'Paddy Cap': 20.00
+  'Snake Skin Sneakers': 10.00
+  'Countryside Sneakers': 10.00
+  'Tactical Gloves': 20.00
+key:
+  'Weapon Skin Key': 2.50
+
+drop_rate: 10
