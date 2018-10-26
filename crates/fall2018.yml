@@ -1,0 +1,20 @@
+name: 'FALL 2018 CRATE'
+items:
+  'Bomber Jacket (Mustard)': 0.08
+  'Suit Coat (Gray)': 0.08
+  'Jungle Leggings': 0.32
+  'Woven Sun Hat': 0.32
+  'Born to Survive Shorts': 0.60
+  'Pochinki Fellas Jersey': 1.30
+  'Tweed Vest (Gray)': 1.30
+  'Striped Slippers (Pink)': 4.00
+  'Kicks (Red)': 6.00
+  'Suit Pants (Gray)': 6.00
+  'Long Sleeved Turtleneck (Burgundy)': 20.00
+  'Loafers (Brown)': 20.00
+  'Slip-ons (Gray)': 20.00
+  'Slippers (Black)': 20.00
+key:
+  'Weapon Skin Key': 0
+
+drop_rate: 0
